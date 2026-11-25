@@ -41,8 +41,10 @@ const FILMS = [
     alt: 'Two people wade through a creek under a fallen tree',
   },
   {
-    slug: 'tangled-in-shoals', title: 'Tangled in Shoals', youtube: 'wAi5_21FryM', kind: 'Short film',
-    role: '', runtime: '', year: '', place: '', logline: '', note: '', credits: [], screenings: '',
+    slug: 'tangled-in-shoals', title: 'Tangled in Shoals', youtube: 'wAi5_21FryM', kind: 'Experimental short',
+    role: 'Writer / Director / Editor', runtime: '', year: '2024', place: 'Newport Beach, California',
+    logline: 'A sunlit visual study in vintage film texture, made to test what the edit can do.',
+    note: '', credits: [], screenings: '',
     alt: 'A smiling young woman lies in sunlit grass, framed like a strip of film',
   },
   {
