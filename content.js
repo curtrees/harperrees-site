@@ -73,5 +73,5 @@ const MORE = [
   { slug: 'thailand-2023', title: 'Thailand 2023', youtube: 'IjCEw7oW9gI', tag: 'Travel film', alt: 'A Thai coastline with the title Thailand 2023' },
 ];
 
-// Set to true once resume.pdf has been added to the site folder.
-const SHOW_RESUME = false;
+// Shows the "Resume (PDF)" button. resume.pdf is the web copy (no phone number).
+const SHOW_RESUME = true;

@@ -9,7 +9,7 @@ A plain static site, with no build step.
 - `site.js`: rendering, film pages (`#film-<slug>`), video player and hover previews
 - `styles.css`: design
 - `images/`: stills named `<slug>.webp` plus `<slug>-1..3.webp` for hover previews
-- `resume.pdf`: add it, then set `SHOW_RESUME = true` in `content.js`
+- `resume.pdf`: web copy of the resume with the phone number removed. Replace it to update; keep the same file name.
 
 Hosted on Netlify. Every push to `main` goes live automatically.
 
