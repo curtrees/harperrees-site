@@ -8,6 +8,24 @@
   const frames = slug => [img(slug), `images/${slug}-1.webp`, `images/${slug}-2.webp`, `images/${slug}-3.webp`];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* Draft view: add ?draft to the address to see every empty field as a placeholder. */
+  const DRAFT = new URLSearchParams(location.search).has('draft');
+  const HINT = {
+    role: 'Your role, e.g. Writer / Director', runtime: 'Runtime, e.g. 7 min', year: 'Year',
+    place: 'Where it was shot', logline: 'Logline: who it’s about, what they want, and what’s in the way',
+    note: 'Director’s note: 2–3 sentences on why you made it and what it’s really about',
+    screenings: 'Festivals, screenings or class showcases, if any', collabRole: 'Your role on this film',
+  };
+  const tbd = key => `<i class="tbd">${HINT[key]}</i>`;
+  const val = (v, key) => v ? esc(v) : (DRAFT ? tbd(key) : '');
+  if (DRAFT) {
+    document.body.classList.add('draft');
+    const bar = document.createElement('div');
+    bar.className = 'draftbar mono';
+    bar.innerHTML = 'Draft view · amber text marks fields still to fill in · <a href="' + location.pathname + location.hash + '">See the public view</a>';
+    document.body.prepend(bar);
+  }
+
   /* Hover flip-book: cycles through stills while the pointer is over a frame. */
   function flip(el, slug) {
     if (reduced || !matchMedia('(hover: hover)').matches) return;
@@ -33,8 +51,8 @@
   }
 
   const specs = rows => {
-    const filled = rows.filter(([, v]) => v);
-    return filled.length ? `<dl class="specs">${filled.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>` : '';
+    const shown = rows.filter(([, v]) => v || DRAFT);
+    return shown.length ? `<dl class="specs">${shown.map(([k, v, key]) => `<dt>${k}</dt><dd>${val(v, key)}</dd>`).join('')}</dl>` : '';
   };
 
   /* Video modal */
@@ -65,8 +83,8 @@
         <div class="film-text">
           <p class="kind mono">${esc(f.kind)}</p>
           <h3>${esc(f.title)}</h3>
-          ${f.logline ? `<p class="log">${esc(f.logline)}</p>` : ''}
-          ${specs([['Role', f.role], ['Shot in', f.place], ['Year', f.year]])}
+          ${f.logline || DRAFT ? `<p class="log">${val(f.logline, 'logline')}</p>` : ''}
+          ${specs([['Role', f.role, 'role'], ['Shot in', f.place, 'place'], ['Year', f.year, 'year']])}
           <div class="links">
             <a class="btn" href="#film-${f.slug}">Film page</a>
             <a class="btn" href="${ytWatch(f.youtube)}" data-play="${f.youtube}" data-title="${esc(f.title)}">▶ Watch</a>
@@ -87,7 +105,7 @@
             <div>
               <span class="mono" style="color:var(--muted)">${esc(c.kind)}</span>
               <h3>${esc(c.title)}</h3>
-              ${c.role ? `<p class="role">Harper: ${esc(c.role)}</p>` : ''}
+              ${c.role || DRAFT ? `<p class="role">Harper: ${val(c.role, 'collabRole')}</p>` : ''}
               <p>${c.note}</p>
               <div class="links" style="margin-top:14px"><a class="btn" href="${ytWatch(c.youtube)}" data-play="${c.youtube}" data-title="${esc(c.title)}">▶ Watch</a></div>
             </div>
@@ -109,8 +127,10 @@
     const i = FILMS.findIndex(f => f.slug === slug), f = FILMS[i];
     const prev = FILMS[(i - 1 + FILMS.length) % FILMS.length], next = FILMS[(i + 1) % FILMS.length];
     const stills = frames(f.slug).slice(1).map((s, k) => `<img src="${s}" alt="Still ${k + 1} from ${esc(f.title)}" loading="lazy" onerror="this.remove()">`).join('');
-    const credits = f.credits && f.credits.length
-      ? `<h3>Credits</h3><dl class="endcred">${f.credits.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>` : '';
+    const creditRows = f.credits && f.credits.length ? f.credits
+      : DRAFT ? [['Director', ''], ['Writer', ''], ['Cinematography', ''], ['Editor', ''], ['Cast', '']] : [];
+    const credits = creditRows.length
+      ? `<h3>Credits</h3><dl class="endcred">${creditRows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v ? esc(v) : '<i class="tbd">Name</i>'}</dd>`).join('')}</dl>` : '';
     document.title = `${f.title} | Harper Rees`;
     $('#filmPage').innerHTML = `
       <div class="wrap fp-top">
@@ -123,19 +143,19 @@
           <div>
             <span class="mono" style="color:var(--muted)">${esc(f.kind)}</span>
             <h1>${esc(f.title)}</h1>
-            ${f.logline ? `<p class="log">${esc(f.logline)}</p>` : ''}
+            ${f.logline || DRAFT ? `<p class="log">${val(f.logline, 'logline')}</p>` : ''}
           </div>
-          <div style="align-self:end">${specs([['Role', f.role], ['Runtime', f.runtime], ['Shot in', f.place], ['Year', f.year]])}</div>
+          <div style="align-self:end">${specs([['Role', f.role, 'role'], ['Runtime', f.runtime, 'runtime'], ['Shot in', f.place, 'place'], ['Year', f.year, 'year']])}</div>
         </div>
         <div class="fp-body">
           <div>
-            ${f.note ? `<h3>Director’s note</h3><p>${esc(f.note)}</p>` : ''}
-            <h3 ${f.note ? 'style="margin-top:32px"' : ''}>Stills</h3>
+            ${f.note || DRAFT ? `<h3>Director’s note</h3><p>${val(f.note, 'note')}</p>` : ''}
+            <h3 ${f.note || DRAFT ? 'style="margin-top:32px"' : ''}>Stills</h3>
             <div class="stills">${stills}</div>
           </div>
           <div>
             ${credits}
-            ${f.screenings ? `<h3 style="margin-top:32px">Screenings</h3><p>${esc(f.screenings)}</p>` : ''}
+            ${f.screenings || DRAFT ? `<h3 style="margin-top:32px">Screenings</h3><p>${val(f.screenings, 'screenings')}</p>` : ''}
             <p style="margin-top:${credits ? '32px' : '0'}"><a class="btn" href="${ytWatch(f.youtube)}" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
           </div>
         </div>
