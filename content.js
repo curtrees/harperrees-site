@@ -28,7 +28,9 @@ const FILMS = [
   },
   {
     slug: 'forever-yours', title: 'Forever Yours', youtube: '1ABx9m9Giqk', kind: 'Short film',
-    role: 'Writer / Director', runtime: '', year: '2025', place: 'Orange, California', logline: '', note: '', credits: [], screenings: '',
+    role: 'Writer / Director', runtime: '', year: '2025', place: 'Orange, California',
+    logline: 'When the pressure of a secret relationship becomes too much, tragedy ensues.',
+    note: '', credits: [], screenings: '',
     alt: 'Two silhouetted figures face each other in a warmly lit doorway',
   },
   {
