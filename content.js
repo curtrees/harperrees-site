@@ -49,7 +49,9 @@ const FILMS = [
   },
   {
     slug: 'mantra', title: 'Mantra', youtube: 'yHPH_ZjFnVY', kind: 'Short film',
-    role: '', runtime: '', year: '', place: '', logline: '', note: '', credits: [], screenings: '',
+    role: 'Writer / Director', runtime: '', year: '2025', place: 'Orange, California',
+    logline: 'What begins as a night of ritual turns sinister when Lucia’s desire for love manifests into something she can’t undo.',
+    note: '', credits: [], screenings: '',
     alt: 'A young man gently touches a young woman’s face against a bright window',
   },
 ];
