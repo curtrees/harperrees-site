@@ -16,10 +16,10 @@
 const FILMS = [
   {
     slug: 'ball-boy', title: 'Ball Boy', youtube: 'byZOfsVW2Ms', kind: 'Short film',
-    role: '',        // e.g. 'Writer / Director'
+    role: 'Writer / Director / Editor',
     runtime: '',     // e.g. '7 min'
-    year: '',        // e.g. '2024'
-    place: '',       // e.g. 'Orange, California'
+    year: '2024',
+    place: 'Chapman University, Orange, California',
     logline: 'When intrigue becomes infatuation.',  // one sentence: who it's about, what they want, what's in the way
     note: '',        // director's note: 2–3 sentences on why she made it
     credits: [],     // e.g. [['Director','Harper Rees'], ['Cinematography','Name']]
