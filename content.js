@@ -29,7 +29,7 @@ const FILMS = [
   {
     slug: 'forever-yours', title: 'Forever Yours', youtube: '1ABx9m9Giqk', kind: 'Short film',
     role: 'Writer / Director', runtime: '', year: '2025', place: 'Orange, California',
-    logline: 'When the pressure of a secret relationship becomes too much, tragedy ensues.',
+    logline: 'When a ball boy and a tennis star uncover an intense, forbidden desire for each other, they find themselves spiraling into a world suppressed by shame, envy, and mounting obsessions.',
     note: '', credits: [], screenings: '',
     alt: 'Two silhouetted figures face each other in a warmly lit doorway',
   },
