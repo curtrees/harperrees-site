@@ -35,7 +35,9 @@ const FILMS = [
   },
   {
     slug: 'the-driftless', title: 'The Driftless', youtube: 'u_PD6pTYEBQ', kind: 'Short film',
-    role: '', runtime: '', year: '', place: 'Driftless Region, Wisconsin', logline: '', note: '', credits: [], screenings: '',
+    role: 'Writer / Director / Editor', runtime: '', year: '2023', place: 'La Crosse, Wisconsin',
+    logline: 'A young man wakes in a stream in the middle of nowhere and forms an unlikely bond with a fly-fishing stranger, until a final surprise leaves him questioning everything he has experienced.',
+    note: '', credits: [], screenings: '',
     alt: 'Two people wade through a creek under a fallen tree',
   },
   {
