@@ -20,7 +20,7 @@ const FILMS = [
     runtime: '',     // e.g. '7 min'
     year: '',        // e.g. '2024'
     place: '',       // e.g. 'Orange, California'
-    logline: '',     // one sentence: who it's about, what they want, what's in the way
+    logline: 'When intrigue becomes infatuation.',  // one sentence: who it's about, what they want, what's in the way
     note: '',        // director's note: 2–3 sentences on why she made it
     credits: [],     // e.g. [['Director','Harper Rees'], ['Cinematography','Name']]
     screenings: '',  // festivals or showcases, if any
