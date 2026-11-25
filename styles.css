@@ -7,6 +7,11 @@
   --muted:#958c7f;      /* secondary text */
   --tungsten:#e3a857;   /* 3200K amber accent */
   --line:rgba(236,229,216,.13);
+  --stone:#e7e0d2;      /* limestone daylight, About section */
+  --stone-ink:#1d1a16;  /* text on limestone */
+  --stone-muted:#6d6457;
+  --stone-line:rgba(29,26,22,.16);
+  --stone-accent:#9a5f17; /* amber, deepened to read on limestone */
   --display:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
   --body:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
   --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -113,7 +118,11 @@ section{padding-block:clamp(56px,9vw,120px) 0}
 .card .meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted)}
 .card:hover h4{color:var(--tungsten)}
 
-/* about */
+/* about: daylight. The dark film sections cut to a limestone exterior. */
+#about{--paper:var(--stone-ink);--muted:var(--stone-muted);--line:var(--stone-line);--tungsten:var(--stone-accent);
+  background:var(--stone);color:var(--stone-ink);margin-top:clamp(56px,9vw,120px);padding-block:clamp(56px,8vw,104px);color-scheme:light}
+#about ::selection{background:var(--stone-ink);color:var(--stone)}
+.slug{display:block;color:var(--stone-accent);margin:0 0 14px}
 .about{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,5vw,72px);align-items:start}
 .portrait-fig{margin:0;position:sticky;top:calc(env(safe-area-inset-top,0px) + 90px)}
 .portrait-fig img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#000;filter:saturate(.92) contrast(1.03)}
