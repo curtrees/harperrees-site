@@ -43,7 +43,7 @@ const FILMS = [
   {
     slug: 'tangled-in-shoals', title: 'Tangled in Shoals', youtube: 'wAi5_21FryM', kind: 'Experimental short',
     role: 'Writer / Director / Editor', runtime: '', year: '2024', place: 'Newport Beach, California',
-    logline: 'A sunlit visual study in vintage film texture, made to test what the edit can do.',
+    logline: 'Fragmented, sun-faded memories of a relationship that never quite took shape.',
     note: '', credits: [], screenings: '',
     alt: 'A smiling young woman lies in sunlit grass, framed like a strip of film',
   },
