@@ -63,7 +63,7 @@ const COLLABS = [
   {
     slug: 'acceptance', title: 'Acceptance', youtube: 'OaWySmC0wgc', kind: '48-hour film · 2024',
     laurel: ['Audience Choice', 'Winner', 'La Crosse Film Academy'],
-    role: '',  // Harper's role, e.g. 'Co-writer and editor'
+    role: 'Co-creator and lead actor',
     note: 'A film by <strong>Peter Thomson and Central Film Club</strong>, written, shot and edited in 48 hours.',
     alt: 'Title card for Acceptance with the Audience Choice laurel',
   },
