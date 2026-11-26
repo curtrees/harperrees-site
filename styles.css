@@ -37,9 +37,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(14,13,12,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
 .brand{font-family:var(--display);font-size:22px;font-style:italic;text-decoration:none;letter-spacing:.01em;white-space:nowrap}
-.nav ul{display:flex;gap:clamp(12px,2.6vw,28px);list-style:none;margin:0;padding:0}
-.nav a.mono{text-decoration:none;color:var(--muted);transition:color .2s}
-.nav a.mono:hover{color:var(--paper)}
+.nav ul{display:flex;gap:clamp(2px,1vw,12px);list-style:none;margin:0 -10px 0 0;padding:0}
+.nav a.mono{display:inline-block;text-decoration:none;color:var(--muted);padding:7px 10px;border-radius:2px;transition:background-color .18s,color .18s}
+.nav a.mono:hover,.nav a.mono:focus-visible{background:var(--paper);color:var(--ink)}
+.nav a.mono:focus-visible{outline-offset:2px}
 @media (max-width:620px){.nav ul li.opt{display:none}}
 
 /* hero */
